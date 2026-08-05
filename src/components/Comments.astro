@@ -1,0 +1,34 @@
+---
+interface Props {
+	pageId: string;
+	pageTitle: string;
+}
+
+const { pageId, pageTitle } = Astro.props;
+const appId = import.meta.env.PUBLIC_CUSDIS_APP_ID;
+---
+
+{
+	appId && (
+		<section class="comments" aria-label="Comments">
+			<h2>Comments</h2>
+			<div
+				id="cusdis_thread"
+				data-host="https://cusdis.com"
+				data-app-id={appId}
+				data-page-id={pageId}
+				data-page-url={Astro.url.href}
+				data-page-title={pageTitle}
+			></div>
+			<script is:inline async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+		</section>
+	)
+}
+
+<style>
+	.comments {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+</style>
