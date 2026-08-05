@@ -16,7 +16,7 @@ The production build is generated with `npm run build`.
 
 Pushes to `main` trigger `.github/workflows/deploy.yml`. The site is published at:
 
-<https://racass.github.io/racass-blog/>
+<https://racass.github.io/>
 
 ## Analytics with Umami Cloud
 

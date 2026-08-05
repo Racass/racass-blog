@@ -7,7 +7,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://racass.github.io',
-	base: '/racass-blog',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
