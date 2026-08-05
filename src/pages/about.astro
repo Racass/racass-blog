@@ -4,12 +4,62 @@ import Layout from '../layouts/BlogPost.astro';
 
 <Layout
 	title="Sobre mim"
-	description="Formação acadêmica, experiência docente e interesses profissionais."
+	description="Professor, engenheiro de software na Microsoft e entusiasta do compartilhamento de conhecimento."
 >
 	<p>
-		Esta página apresentará minha formação acadêmica, experiência docente, interesses de pesquisa e
-		atuação profissional.
+		Sou <strong>Rafael Feliciano Cassiolato</strong>, professor e engenheiro de software. Atualmente
+		atuo na Microsoft, desenvolvendo soluções de software e trabalhando com desafios técnicos que
+		exigem qualidade, colaboração e aprendizado contínuo.
 	</p>
 
-	<p>Este conteúdo será atualizado com minha biografia e informações do currículo.</p>
+	<h2>Experiência e interesses</h2>
+
+	<p>
+		Minha trajetória profissional inclui desenvolvimento de sistemas, aplicações web, serviços de
+		backend, automação e bancos de dados. Tenho especial interesse por engenharia de software,
+		arquitetura, boas práticas de desenvolvimento e pela transformação de problemas reais em soluções
+		simples e sustentáveis.
+	</p>
+
+	<p>
+		No GitHub, compartilho projetos e experimentos com tecnologias como C#, Python, C, PowerShell e
+		SQL. Os repositórios incluem materiais para aulas, algoritmos, aplicações web, ferramentas de
+		automação e exemplos voltados ao aprendizado.
+	</p>
+
+	<h2>Ensino e compartilhamento</h2>
+
+	<p>
+		Como professor, acredito que conhecimento técnico deve ser apresentado de forma clara, prática e
+		acessível. Este site reúne materiais didáticos, artigos, tutoriais, projetos e anotações que podem
+		ser úteis para estudantes, profissionais e qualquer pessoa interessada em tecnologia.
+	</p>
+
+	<h2>Perfis profissionais</h2>
+
+	<div class="profile-links">
+		<a href="https://www.linkedin.com/in/rafael-cassiolato/" target="_blank" rel="noreferrer">
+			LinkedIn
+		</a>
+		<a href="https://github.com/Racass" target="_blank" rel="noreferrer">GitHub</a>
+	</div>
 </Layout>
+
+<style>
+	.profile-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+	}
+	.profile-links a {
+		padding: 0.55rem 1rem;
+		border: 1px solid var(--accent);
+		border-radius: 999px;
+		text-decoration: none;
+	}
+	.profile-links a:first-child {
+		background: var(--accent);
+		color: white;
+	}
+</style>
