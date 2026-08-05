@@ -1,10 +1,10 @@
 ---
-title: 'A new home for my work'
-description: 'Introducing this academic portfolio, teaching resource, and article collection.'
+title: 'Um novo espaço para o meu trabalho'
+description: 'Apresentação deste portfólio acadêmico, acervo didático e coleção de artigos.'
 pubDate: '2026-08-05'
 ---
 
-This site is being rebuilt as a place to share academic work, teaching materials, technical
-articles, and current projects.
+Este site está sendo reconstruído como um espaço para compartilhar trabalhos acadêmicos,
+materiais didáticos, artigos técnicos e projetos atuais.
 
-More content will be added as the portfolio takes shape.
+Novos conteúdos serão adicionados à medida que o portfólio ganhar forma.

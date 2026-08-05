@@ -15,7 +15,7 @@ type Props = Omit<CollectionEntry<'blog'>['data'], 'pubDate'> & {
 const { title, description, pubDate, updatedDate, heroImage, comments = false } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
@@ -73,7 +73,7 @@ const { title, description, pubDate, updatedDate, heroImage, comments = false } 
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										Atualizado em <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
