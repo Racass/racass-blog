@@ -4,20 +4,33 @@ const measurementId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 
 {
 	measurementId && (
-		<>
-			<script
-				is:inline
-				async
-				src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-			></script>
-			<script is:inline define:vars={{ measurementId }}>
-				window.dataLayer = window.dataLayer || [];
-				function gtag() {
-					window.dataLayer.push(arguments);
+		<script is:inline define:vars={{ measurementId }}>
+			const consentKey = 'analytics-consent';
+
+			function loadGoogleAnalytics() {
+				if (document.querySelector('script[data-google-analytics]')) {
+					return;
 				}
-				gtag('js', new Date());
-				gtag('config', measurementId);
-			</script>
-		</>
+
+				const googleTag = document.createElement('script');
+				googleTag.async = true;
+				googleTag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+				googleTag.dataset.googleAnalytics = 'true';
+				document.head.appendChild(googleTag);
+
+				window.dataLayer = window.dataLayer || [];
+				window.gtag = function () {
+					window.dataLayer.push(arguments);
+				};
+				window.gtag('js', new Date());
+				window.gtag('config', measurementId);
+			}
+
+			if (localStorage.getItem(consentKey) === 'granted') {
+				loadGoogleAnalytics();
+			}
+
+			window.addEventListener('analytics-consent-granted', loadGoogleAnalytics);
+		</script>
 	)
 }

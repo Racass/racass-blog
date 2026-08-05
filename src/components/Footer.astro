@@ -1,5 +1,8 @@
 ---
+import ConsentBanner from './ConsentBanner.astro';
+
 const today = new Date();
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 ---
 
 <footer>
@@ -18,7 +21,10 @@ const today = new Date();
 		</svg>
 	</a>
 	<span>Desenvolvido com Astro.</span>
+	<a href={`${base}privacidade/`}>Privacidade</a>
+	<button type="button" data-open-consent>Preferências de métricas</button>
 </footer>
+<ConsentBanner />
 <style>
 	footer {
 		display: flex;
@@ -31,12 +37,22 @@ const today = new Date();
 		color: rgb(var(--gray));
 		text-align: center;
 	}
-	footer a {
+	footer a,
+	footer button {
 		display: inline-flex;
 		color: rgb(var(--gray));
 	}
-	footer a:hover {
+	footer a:hover,
+	footer button:hover {
 		color: #0a66c2;
+	}
+	footer button {
+		padding: 0;
+		border: 0;
+		background: transparent;
+		font: inherit;
+		text-decoration: underline;
+		cursor: pointer;
 	}
 	footer svg {
 		width: 1.1em;

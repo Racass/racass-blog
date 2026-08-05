@@ -1,0 +1,124 @@
+---
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+
+<aside class="consent-banner" data-consent-banner hidden aria-label="Preferências de privacidade">
+	<div>
+		<strong>Métricas de acesso</strong>
+		<p>
+			Este site usa o Google Analytics somente com sua autorização para entender quais páginas são
+			mais acessadas. <a href={`${base}privacidade/`}>Saiba mais</a>.
+		</p>
+	</div>
+	<div class="actions">
+		<button type="button" class="secondary" data-consent-choice="denied">Recusar</button>
+		<button type="button" class="primary" data-consent-choice="granted">Aceitar métricas</button>
+	</div>
+</aside>
+
+<script>
+	const consentKey = 'analytics-consent';
+	const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
+	const consentButtons = document.querySelectorAll<HTMLButtonElement>('[data-consent-choice]');
+	const preferenceButtons = document.querySelectorAll<HTMLButtonElement>('[data-open-consent]');
+
+	const showBanner = () => {
+		if (banner) {
+			banner.hidden = false;
+		}
+	};
+
+	const hideBanner = () => {
+		if (banner) {
+			banner.hidden = true;
+		}
+	};
+
+	if (!localStorage.getItem(consentKey)) {
+		showBanner();
+	}
+
+	consentButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const previousChoice = localStorage.getItem(consentKey);
+			const choice = button.dataset.consentChoice;
+
+			if (!choice) {
+				return;
+			}
+
+			localStorage.setItem(consentKey, choice);
+			hideBanner();
+
+			if (choice === 'granted') {
+				window.dispatchEvent(new Event('analytics-consent-granted'));
+			} else if (previousChoice === 'granted') {
+				window.location.reload();
+			}
+		});
+	});
+
+	preferenceButtons.forEach((button) => {
+		button.addEventListener('click', showBanner);
+	});
+</script>
+
+<style>
+	.consent-banner {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		left: 1rem;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		max-width: 920px;
+		margin: auto;
+		padding: 1rem 1.25rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 16px;
+		background: var(--surface);
+		box-shadow: var(--box-shadow);
+		backdrop-filter: blur(16px);
+	}
+	.consent-banner[hidden] {
+		display: none;
+	}
+	.consent-banner p {
+		margin: 0.25rem 0 0;
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+	.actions {
+		display: flex;
+		flex-shrink: 0;
+		gap: 0.5rem;
+	}
+	button {
+		padding: 0.55rem 0.85rem;
+		border: 1px solid var(--accent);
+		border-radius: 999px;
+		font: inherit;
+		cursor: pointer;
+	}
+	.primary {
+		background: var(--accent);
+		color: white;
+	}
+	.secondary {
+		background: transparent;
+		color: var(--accent);
+	}
+	@media (max-width: 720px) {
+		.consent-banner {
+			align-items: stretch;
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.actions {
+			justify-content: flex-end;
+		}
+	}
+</style>
