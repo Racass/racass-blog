@@ -1,14 +1,23 @@
 ---
-const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const measurementId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 ---
 
 {
-	websiteId && (
-		<script
-			is:inline
-			defer
-			src="https://cloud.umami.is/script.js"
-			data-website-id={websiteId}
-		></script>
+	measurementId && (
+		<>
+			<script
+				is:inline
+				async
+				src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+			></script>
+			<script is:inline define:vars={{ measurementId }}>
+				window.dataLayer = window.dataLayer || [];
+				function gtag() {
+					window.dataLayer.push(arguments);
+				}
+				gtag('js', new Date());
+				gtag('config', measurementId);
+			</script>
+		</>
 	)
 }

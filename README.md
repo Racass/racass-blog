@@ -18,12 +18,12 @@ Pushes to `main` trigger `.github/workflows/deploy.yml`. The site is published a
 
 <https://racass.github.io/>
 
-## Analytics with Umami Cloud
+## Analytics with Google Analytics
 
-1. Add the deployed site to [Umami Cloud](https://cloud.umami.is/).
-2. Copy its website ID.
+1. Create a GA4 web data stream in [Google Analytics](https://analytics.google.com/).
+2. Copy its measurement ID (`G-XXXXXXXXXX`).
 3. In the GitHub repository, open **Settings > Secrets and variables > Actions > Variables**.
-4. Create `PUBLIC_UMAMI_WEBSITE_ID` with that website ID.
+4. Create `PUBLIC_GOOGLE_ANALYTICS_ID` with that measurement ID.
 5. Run the deployment workflow again.
 
 ## Comments with Cusdis

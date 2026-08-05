@@ -18,7 +18,7 @@ jobs:
       - name: Build and upload site
         uses: withastro/action@v6
         env:
-          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+          PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.PUBLIC_GOOGLE_ANALYTICS_ID }}
           PUBLIC_CUSDIS_APP_ID: ${{ vars.PUBLIC_CUSDIS_APP_ID }}
 
   deploy:
