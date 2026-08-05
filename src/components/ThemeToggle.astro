@@ -1,0 +1,73 @@
+<button
+	type="button"
+	class="theme-toggle"
+	data-theme-toggle
+	aria-label="Ativar tema escuro"
+	aria-pressed="false"
+>
+	<svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
+		<path
+			fill="currentColor"
+			d="M20.21 15.32A8.56 8.56 0 0 1 8.68 3.79 9 9 0 1 0 20.21 15.32Z"
+		></path>
+	</svg>
+	<svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+		<path
+			fill="currentColor"
+			d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-6h1v3h-2V2h1Zm0 17h1v3h-2v-3h1ZM4.22 5.64l-.7-.71 2.12-2.12 1.42 1.42-2.12 2.12-.72-.71Zm13.71 12.72-.7-.71 1.41-1.42 2.13 2.12-1.42 1.42-1.42-1.41ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.93 17.65l2.12 2.12-1.41 1.42-2.13-2.12 1.42-1.42ZM18.36 3.52l.71-.71 1.41 1.42-2.12 2.12-1.42-1.42 1.42-1.41Z"
+		></path>
+	</svg>
+</button>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+
+	if (button) {
+		const updateButton = () => {
+			const isDark = document.documentElement.dataset.theme === 'dark';
+			button.setAttribute('aria-pressed', String(isDark));
+			button.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+		};
+
+		updateButton();
+		button.addEventListener('click', () => {
+			const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+			document.documentElement.dataset.theme = theme;
+			localStorage.setItem('theme', theme);
+			updateButton();
+		});
+	}
+</script>
+
+<style>
+	.theme-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 50%;
+		background: var(--surface);
+		color: rgb(var(--black));
+		cursor: pointer;
+	}
+	.theme-toggle:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.theme-toggle svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+	.sun {
+		display: none;
+	}
+	:global([data-theme='dark']) .moon {
+		display: none;
+	}
+	:global([data-theme='dark']) .sun {
+		display: block;
+	}
+</style>

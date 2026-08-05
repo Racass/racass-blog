@@ -23,6 +23,11 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<script is:inline>
+	const savedTheme = localStorage.getItem('theme');
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+</script>
 <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 <link rel="icon" href={`${base}favicon.ico`} />
 <link rel="sitemap" href={`${base}sitemap-index.xml`} />
