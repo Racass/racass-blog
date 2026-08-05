@@ -4,21 +4,36 @@ import Layout from '../layouts/BlogPost.astro';
 
 <Layout
 	title="Sobre mim"
-	description="Professor, engenheiro de software na Microsoft e entusiasta do compartilhamento de conhecimento."
+	description="Professor, engenheiro de software e entusiasta do compartilhamento de conhecimento."
 >
 	<p>
-		Sou <strong>Rafael Feliciano Cassiolato</strong>, professor e engenheiro de software. Atualmente
-		atuo na Microsoft, desenvolvendo soluções de software e trabalhando com desafios técnicos que
-		exigem qualidade, colaboração e aprendizado contínuo. Vivo em São Paulo, Brasil.
+		Sou <strong>Rafael Feliciano Cassiolato</strong>, professor e engenheiro de software. Minha
+		trajetória combina desenvolvimento de soluções, ensino de tecnologia e aprendizado contínuo.
+		Vivo em São Paulo, Brasil.
 	</p>
 
-	<h2>Formação e atuação</h2>
+	<h2>Experiências profissionais</h2>
 
-	<p>
-		Minha formação inclui passagens pela FIAP e pelo MBA USP/Esalq. Ao longo da trajetória
-		profissional, venho trabalhando com desenvolvimento de sistemas, aplicações web, serviços de
-		backend, automação e bancos de dados.
-	</p>
+	<div class="experience-list">
+		<article>
+			<h3>Microsoft</h3>
+			<p>Engenheiro de Software</p>
+		</article>
+		<article>
+			<h3>FIAP</h3>
+			<p>Professor</p>
+		</article>
+		<article>
+			<h3>Sky.One</h3>
+			<p>Desenvolvedor Backend</p>
+		</article>
+		<article>
+			<h3>Ramo Sistemas</h3>
+			<p>Analista de Desenvolvimento</p>
+		</article>
+	</div>
+
+	<h2>Interesses técnicos</h2>
 
 	<p>
 		Tenho especial interesse por engenharia de software, arquitetura, inteligência artificial e pelo
@@ -51,6 +66,24 @@ import Layout from '../layouts/BlogPost.astro';
 </Layout>
 
 <style>
+	.experience-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		margin: 1.5rem 0 3rem;
+	}
+	.experience-list article {
+		padding: 1rem 1.25rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 14px;
+	}
+	.experience-list h3,
+	.experience-list p {
+		margin: 0;
+	}
+	.experience-list p {
+		color: rgb(var(--gray));
+	}
 	.profile-links {
 		display: flex;
 		flex-wrap: wrap;
@@ -66,5 +99,10 @@ import Layout from '../layouts/BlogPost.astro';
 	.profile-links a:first-child {
 		background: var(--accent);
 		color: white;
+	}
+	@media (max-width: 600px) {
+		.experience-list {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
